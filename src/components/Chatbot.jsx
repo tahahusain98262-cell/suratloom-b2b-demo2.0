@@ -102,7 +102,14 @@ export function Chatbot({ onExplore, onRequest, onLogin }) {
       let reply = '';
       const lower = trimmed.toLowerCase();
 
-      if (lower.includes('sample') || lower.includes('swatch')) {
+      const isContactQuery = 
+        /(contact|phone|mobile|call|number|telephone)/i.test(lower) ||
+        /how (can|do) i (reach|connect|talk to|get in touch)/i.test(lower) ||
+        /(supplier|partner|trade partner|mill|suratloom).*?(detail|info|reach|connect|address|talk)/i.test(lower);
+
+      if (isContactQuery) {
+        reply = "Here are the trade partner contact details:\n\n• Name: Demo Trade Partner\n• Phone: 9XXX-XXX-123\n• Label: Demo contact — not a real phone number\n\n(Note: Sample demonstration data only. Real supplier contact details are shared only with verified trade accounts after B2B verification.)";
+      } else if (lower.includes('sample') || lower.includes('swatch')) {
         reply = 'We provide physical swatch books with authentic fabric cuts, shade numbers, and GSM details for wholesale buyers. You can use the "Request Samples" button to place a courier dispatch request.';
       } else if (lower.includes('price') || lower.includes('rate') || lower.includes('cost')) {
         reply = 'Wholesale rates are tiered by volume (A-category wholesale & broker rates). Because pricing fluctuates with grey yarn and market dye indices, verified rates are unlocked via Trade Verification.';

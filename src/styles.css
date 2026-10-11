@@ -2949,6 +2949,7 @@ ul, ol {
   font-family: var(--font-sans);
   font-size: 13px;
   line-height: 1.45;
+  white-space: pre-line;
 }
 
 .sl-chat-msg-assistant .sl-chat-msg-bubble {
