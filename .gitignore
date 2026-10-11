@@ -8,4 +8,5 @@ dist
 .vercel
 *.zip
 *.tar.gz
-.system_generated
+*.system_generated
+*.bat
