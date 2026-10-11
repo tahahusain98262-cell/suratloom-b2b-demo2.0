@@ -14,6 +14,7 @@ import { Footer } from './components/Footer';
 import { LoginModal, RequestModal, Toast } from './components/Modals';
 import { Portal } from './components/Portal';
 import { Admin } from './components/Admin';
+import { Chatbot } from './components/Chatbot';
 
 const INITIAL_PRODUCTS = [
   { id: 'SL-104', name: 'Luxe Rayon Slub', type: 'Rayon', code: 'RAY-104', color: 'Sandstone', shade: 'S-04', width: '58"', unit: 'Than', priceA: 62, priceB: 66, stock: 1240, thanMeters: 100, stockThans: 12, swatch: 'sand', tag: 'Best seller' },
@@ -354,6 +355,19 @@ function App() {
           </button>
         </div>
       )}
+
+      {/* Floating AI Chatbot Assistant */}
+      <Chatbot 
+        onExplore={() => {
+          if (page !== 'home') go('home');
+          setTimeout(() => {
+            const el = document.getElementById('fabrics');
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+          }, 100);
+        }}
+        onRequest={openRequest}
+        onLogin={openLogin}
+      />
 
       {/* Modals & Overlays */}
       <LoginModal 
