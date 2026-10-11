@@ -187,6 +187,54 @@ export function Portal({
           </div>
         </header>
 
+        {/* Mobile Tab Navigation (<= 992px) */}
+        <nav className="portal-mobile-tabs" aria-label="Portal Mobile Navigation">
+          <button
+            type="button"
+            className={`portal-mobile-tab ${tab === 'catalog' ? 'active' : ''}`}
+            onClick={() => setTab('catalog')}
+          >
+            <LayoutDashboard size={14} />
+            <span>Catalogue</span>
+          </button>
+          <button
+            type="button"
+            className={`portal-mobile-tab ${tab === 'orders' ? 'active' : ''}`}
+            onClick={() => setTab('orders')}
+          >
+            <ClipboardList size={14} />
+            <span>Orders</span>
+            {activeOrders.length > 0 && <span className="mobile-tab-badge">{activeOrders.length}</span>}
+          </button>
+          <button
+            type="button"
+            className={`portal-mobile-tab ${tab === 'dispatch' ? 'active' : ''}`}
+            onClick={() => setTab('dispatch')}
+          >
+            <Truck size={14} />
+            <span>Logistics</span>
+          </button>
+          {session.role === 'admin' && (
+            <button
+              type="button"
+              className="portal-mobile-tab"
+              onClick={onAdmin}
+            >
+              <Users size={14} />
+              <span>Admin</span>
+            </button>
+          )}
+          <button
+            type="button"
+            className="portal-mobile-tab"
+            onClick={onLogout}
+            title="Sign out"
+          >
+            <LogOut size={14} />
+            <span>Sign out</span>
+          </button>
+        </nav>
+
         {/* Tab 1: Catalog */}
         {tab === 'catalog' && (
           <div className="portal-catalog-view">

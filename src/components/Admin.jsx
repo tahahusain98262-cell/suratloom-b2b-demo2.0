@@ -121,6 +121,45 @@ export function Admin({
 
         {/* Content Area */}
         <main className="sl-admin-content">
+          {/* Mobile Admin Navigation (<= 992px) */}
+          <nav className="admin-mobile-tabs" aria-label="Admin Mobile Navigation">
+            <button
+              type="button"
+              className={`admin-mobile-tab ${section === 'overview' ? 'active' : ''}`}
+              onClick={() => setSection('overview')}
+            >
+              <LayoutDashboard size={14} />
+              <span>Overview</span>
+            </button>
+            <button
+              type="button"
+              className={`admin-mobile-tab ${section === 'inventory' ? 'active' : ''}`}
+              onClick={() => setSection('inventory')}
+            >
+              <Boxes size={14} />
+              <span>Inventory</span>
+            </button>
+            <button
+              type="button"
+              className={`admin-mobile-tab ${section === 'orders' ? 'active' : ''}`}
+              onClick={() => setSection('orders')}
+            >
+              <ClipboardList size={14} />
+              <span>Orders ({orders.length})</span>
+            </button>
+            <button
+              type="button"
+              className={`admin-mobile-tab ${section === 'buyers' ? 'active' : ''}`}
+              onClick={() => setSection('buyers')}
+            >
+              <Users size={14} />
+              <span>Buyers</span>
+              {approval.filter(a => a.status === 'Pending').length > 0 && (
+                <span className="mobile-tab-badge">{approval.filter(a => a.status === 'Pending').length}</span>
+              )}
+            </button>
+          </nav>
+
           {/* Section: Overview */}
           {section === 'overview' && (
             <div className="admin-section-wrap">

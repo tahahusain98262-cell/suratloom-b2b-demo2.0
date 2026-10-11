@@ -131,13 +131,22 @@ export function Navbar({ onLogin, onRequest, onPortal, session, onLogout }) {
 
             <div className="sl-mobile-footer-actions">
               {session ? (
-                <button 
-                  type="button" 
-                  className="sl-btn sl-btn-portal full-width" 
-                  onClick={() => { setMobileMenuOpen(false); onPortal(); }}
-                >
-                  <ShieldCheck size={16} /> Open Workspace
-                </button>
+                <>
+                  <button 
+                    type="button" 
+                    className="sl-btn sl-btn-portal full-width" 
+                    onClick={() => { setMobileMenuOpen(false); onPortal(); }}
+                  >
+                    <ShieldCheck size={16} /> Open Workspace ({session.tier})
+                  </button>
+                  <button 
+                    type="button" 
+                    className="sl-btn sl-btn-ghost full-width" 
+                    onClick={() => { setMobileMenuOpen(false); onLogout(); }}
+                  >
+                    Sign out ({session.name.split(' ')[0]})
+                  </button>
+                </>
               ) : (
                 <button 
                   type="button" 
